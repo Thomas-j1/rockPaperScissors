@@ -10,6 +10,8 @@ function start(){
     const gameText = document.querySelector("#gameText");
     const button = document.querySelector("#submit");
     gameText.innerHTML = "Choose:<br>1. Rock<br>2. Paper<br>3. Scissors";
+    const scoreText = document.querySelector("#scoreText");
+    scoreText.innerHTML = `Player: ${playerScore} <br> Computer: ${computerScore} <br> Total rounds: ${totalRounds}`;
 
     button.addEventListener("click", submitAnswer);
 
@@ -90,5 +92,5 @@ function removeErrors(){
 function updateScore(){
     totalRounds++;
     const scoreText = document.querySelector("#scoreText");
-    scoreText.innerHTML= `Player: ${playerScore} <br> Computer: ${computerScore} <br> Total rounds: ${totalRounds}`
+    scoreText.innerHTML= `Player: ${playerScore} <br> Computer: ${computerScore} <br> Total rounds: ${totalRounds}`;
 }
