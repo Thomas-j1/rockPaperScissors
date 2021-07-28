@@ -45,29 +45,29 @@ function playRound(playerSelection, computerSelection) {
     const roundText = document.querySelector("#roundText");
 
     if(playerSelection == computerSelection){
-        roundText.innerHTML = `No winner: ${playerSelection} is the same as ${computerSelection}`;
+        roundText.innerText = `No winner: ${playerSelection} is the same as ${computerSelection}`;
     }else if(playerSelection=="rock"){
         if(computerSelection == "scissors"){
-            roundText.innerHTML = `You Win!: ${playerSelection} beats ${computerSelection}`;
+            roundText.innerText = `You Win!: ${playerSelection} beats ${computerSelection}`;
             playerScore++;
         }else{
-            roundText.innerHTML = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
+            roundText.innerText = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
             computerScore++;
         }
     }else if(playerSelection=="paper"){
         if (computerSelection == "rock") {
-            roundText.innerHTML = `You Win!: ${playerSelection} beats ${computerSelection}`;
+            roundText.innerText = `You Win!: ${playerSelection} beats ${computerSelection}`;
             playerScore++;
         } else {
-            roundText.innerHTML = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
+            roundText.innerText = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
             computerScore++;
         }
     }else if(playerSelection=="scissors"){
         if (computerSelection == "paper") {
-            roundText.innerHTML = `You Win!: ${playerSelection} beats ${computerSelection}`;
+            roundText.innerText = `You Win!: ${playerSelection} beats ${computerSelection}`;
             playerScore++;
         } else {
-            roundText.innerHTML = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
+            roundText.innerText = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
             computerScore++;
         }
     }else{
@@ -81,11 +81,11 @@ function playRound(playerSelection, computerSelection) {
 function wrongInputError(e){
     totalRounds--;
     errorField = document.querySelector("#error");
-    errorField.innerHTML= "Invalid input: \"" + e + "\". Please type rock, paper or scissors";
+    errorField.innerText= "Invalid input: \"" + e + "\". Please type rock, paper or scissors";
 }
 
 function removeErrors(){
-    document.querySelector("#error").innerHTML="";
+    document.querySelector("#error").innerText="";
 
 }
 
