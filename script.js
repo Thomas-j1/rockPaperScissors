@@ -8,12 +8,12 @@ let totalRounds = 0;
 
 function start(){
     const gameText = document.querySelector("#gameText");
-    const button = document.querySelector("#submit");
     gameText.innerHTML = "Choose:<br>1. Rock<br>2. Paper<br>3. Scissors";
     const scoreText = document.querySelector("#scoreText");
     scoreText.innerHTML = `Player: ${playerScore} <br> Computer: ${computerScore} <br> Total rounds: ${totalRounds}`;
 
-    button.addEventListener("click", submitAnswer);
+    const buttons = document.querySelectorAll('.submit');
+    buttons.forEach(button => button.addEventListener('click', submitAnswer))
 
 }
 
@@ -32,10 +32,11 @@ function computerPlay() {
 }
 
 
-function submitAnswer() {
+function submitAnswer(e) {
     removeErrors();
     const computerSelection = computerPlay();
-    const playerInput = document.querySelector("#playerInput");
+    const playerInput = e.srcElement;
+    console.log(playerInput);
     const playerAnswer = playerInput.value.toLowerCase();
     playRound(playerAnswer, computerSelection);
 }
@@ -43,39 +44,40 @@ function submitAnswer() {
 
 function playRound(playerSelection, computerSelection) {
     const roundText = document.querySelector("#roundText");
+    roundText.innerHTML="Computer chose: " + computerSelection + "<br>";
 
     if(playerSelection == computerSelection){
-        roundText.innerText = `No winner: ${playerSelection} is the same as ${computerSelection}`;
+        roundText.innerText += `No winner: ${playerSelection} is the same as ${computerSelection}`;
     }else if(playerSelection=="rock"){
         if(computerSelection == "scissors"){
-            roundText.innerText = `You Win!: ${playerSelection} beats ${computerSelection}`;
+            roundText.innerText += `You Win!: ${playerSelection} beats ${computerSelection}`;
             playerScore++;
         }else{
-            roundText.innerText = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
+            roundText.innerText += `You Lose!: ${playerSelection} loses to ${computerSelection}`;
             computerScore++;
         }
     }else if(playerSelection=="paper"){
         if (computerSelection == "rock") {
-            roundText.innerText = `You Win!: ${playerSelection} beats ${computerSelection}`;
+            roundText.innerText += `You Win!: ${playerSelection} beats ${computerSelection}`;
             playerScore++;
         } else {
-            roundText.innerText = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
+            roundText.innerText += `You Lose!: ${playerSelection} loses to ${computerSelection}`;
             computerScore++;
         }
     }else if(playerSelection=="scissors"){
         if (computerSelection == "paper") {
-            roundText.innerText = `You Win!: ${playerSelection} beats ${computerSelection}`;
+            roundText.innerText += `You Win!: ${playerSelection} beats ${computerSelection}`;
             playerScore++;
         } else {
-            roundText.innerText = `You Lose!: ${playerSelection} loses to ${computerSelection}`;
+            roundText.innerText += `You Lose!: ${playerSelection} loses to ${computerSelection}`;
             computerScore++;
-        }
+        } 
     }else{
         wrongInputError(playerSelection);
     }
     updateScore();
-    console.log(playerSelection);
-    console.log(computerSelection);
+    //console.log(playerSelection);
+    //console.log(computerSelection);
 }
 
 function wrongInputError(e){
